@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://taskbeam.tinyrobots.org/sitemap.xml

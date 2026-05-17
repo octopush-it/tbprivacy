@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — TaskBeam</title>
+  <meta name="description" content="TaskBeam is built privacy-first: no accounts, no third-party servers, no analytics, no advertising. Your lists live on your device and in your own iCloud." />
+  <meta property="og:title" content="Privacy Policy — TaskBeam" />
+  <meta property="og:description" content="TaskBeam is built privacy-first: no accounts, no third-party servers, no analytics, no advertising. Your lists live on your device and in your own iCloud." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/icon.png" />
+  <link rel="icon" type="image/png" href="/assets/icon.png" />
+  <link rel="apple-touch-icon" href="/assets/icon.png" />
+  <style>
+    :root {
+      --bg: #04060f;
+      --bg-elev: #0a0f22;
+      --bg-card: rgba(20, 30, 60, 0.35);
+      --border: rgba(94, 179, 255, 0.12);
+      --border-strong: rgba(94, 179, 255, 0.28);
+      --text: #e8efff;
+      --text-muted: #8a98b8;
+      --text-dim: #5d6a8a;
+      --accent: #5eb3ff;
+      --accent-bright: #8ccaff;
+      --accent-glow: rgba(94, 179, 255, 0.45);
+      --accent-soft: rgba(94, 179, 255, 0.08);
+      --max-width: 780px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(circle at 20% -10%, rgba(94, 179, 255, 0.07), transparent 40%);
+      background-attachment: fixed;
+    }
+    a { color: var(--accent-bright); text-decoration: none; }
+    a:hover { color: #b7dcff; text-decoration: underline; }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .wrap-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      background: rgba(4, 6, 15, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text); }
+    .brand img { width: 28px; height: 28px; border-radius: 7px; }
+    .brand .dot { color: var(--accent); margin: 0 2px; opacity: 0.7; }
+    .nav-links { display: flex; gap: 22px; font-size: 15px; }
+    .nav-links a { color: var(--text-muted); }
+    .nav-links a:hover { color: var(--text); }
+    @media (max-width: 560px) { .nav-links { display: none; } }
+
+    main { padding: 64px 0 40px; }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      margin: 0 0 12px; font-weight: 700;
+    }
+    .effective { color: var(--text-muted); margin: 0 0 36px; font-size: 15px; }
+    .effective em { font-style: normal; color: var(--text); }
+
+    h2 {
+      font-size: 22px; letter-spacing: -0.005em;
+      margin: 44px 0 14px; font-weight: 600; color: var(--text);
+    }
+    h3 {
+      font-size: 17px; margin: 22px 0 8px; font-weight: 600; color: var(--text);
+    }
+
+    p { color: #d3dcef; margin: 0 0 14px; }
+    p.muted { color: var(--text-muted); }
+
+    ul { color: #d3dcef; padding-left: 22px; margin: 0 0 18px; }
+    ul li { margin: 6px 0; }
+
+    hr.rule { border: 0; height: 1px; background: var(--border); margin: 36px 0; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 16px; border-radius: 10px;
+      border: 1px solid var(--border-strong);
+      color: var(--text); font-size: 15px;
+      margin-top: 28px;
+    }
+    .back-link:hover { background: var(--accent-soft); text-decoration: none; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0 60px; margin-top: 60px;
+      color: var(--text-dim); font-size: 14px;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { color: var(--text-muted); }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <img src="/assets/icon.png" alt="TaskBeam" />
+        <span>Task<span class="dot">·</span>Beam</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#privacy">Privacy</a>
+        <a href="/privacy.html">Policy</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Privacy at TaskBeam</h1>
+      <p class="effective">Effective date: <em>05/16/2026</em></p>
+
+      <p>TaskBeam is a list and task app for iOS. We've designed it to be one of the most privacy-respecting apps in its category: we don't ask for your personal information, we don't run a server that stores your tasks, and we don't track you across apps or websites. The only cloud involved is your own iCloud.</p>
+
+      <hr class="rule" />
+
+      <h2>What we don't do</h2>
+      <ul>
+        <li>We do not ask you to create a TaskBeam account.</li>
+        <li>We do not ask for your name, email, phone number, or any other personal information.</li>
+        <li>We do not run a backend server that stores your lists, items, tags, or any of your activity.</li>
+        <li>We do not use third-party analytics, advertising, attribution, or crash-reporting SDKs.</li>
+        <li>We do not display advertisements.</li>
+        <li>We do not track you across apps or websites.</li>
+        <li>We do not sell or share your data — we don't have any to sell.</li>
+      </ul>
+
+      <h2>What we do</h2>
+
+      <p><strong>Your lists are stored on your device.</strong> When you create a list, add an item, set a priority, or apply a tag, that data is written to local storage on your iPhone or iPad first. The app is fully usable offline. If you never sign in to iCloud, your data never leaves your device.</p>
+
+      <p><strong>TaskBeam syncs through your own iCloud (CloudKit).</strong> If you're signed into iCloud and have iCloud Drive enabled, TaskBeam uses Apple's CloudKit framework to sync your lists between the devices signed into your Apple ID. The data is stored in your <em>private</em> CloudKit database — a portion of your personal iCloud storage that belongs to you. We, the developers, do not have access to this data, cannot read it, cannot query it, and cannot export it. Apple's iCloud terms and security practices govern how this storage works; details are available in <a href="https://support.apple.com/en-us/HT202303">Apple's iCloud security overview</a>.</p>
+
+      <p><strong>Sharing a list invites one other person to that list, and only that list.</strong> TaskBeam uses Apple's CKShare primitive. When you tap share, iOS generates an invitation. The person you send it to can accept and then read and edit that one list with you in real time. They cannot see any of your other lists. You can revoke access at any time from the share sheet; they can leave at any time from their own copy. The shared data lives in a CloudKit "shared" zone managed by Apple — again, we don't see it.</p>
+
+      <p><strong>Local notifications, no push server.</strong> If you set a due date on an item, TaskBeam schedules a local notification on your device. The notification is delivered by iOS at the right time without contacting any server. No push tokens or device identifiers are sent anywhere. You can disable notifications at any time in iOS Settings → Notifications → TaskBeam.</p>
+
+      <p><strong>App Store and Apple services.</strong> Because TaskBeam is distributed through the App Store and runs on iOS, the operating system and the App Store collect their own diagnostic and download information independently of us, governed by <a href="https://www.apple.com/legal/privacy/en-ww/">Apple's privacy policy</a>. We do not receive personally identifying data from Apple about who installed the app.</p>
+
+      <h2>What we can and can't see</h2>
+      <p>We can see, in aggregate, the App Store metrics Apple makes available to every developer: total downloads, country, crash counts (without personal identifiers). We do not collect anything beyond what Apple shows every developer by default. We have no separate analytics pipeline, no telemetry, no event log.</p>
+      <p>We have no view at all into the contents of your lists, your tags, who you've shared with, or how you use the app session-by-session. That information is between you, your devices, and Apple's iCloud.</p>
+
+      <h2>Data deletion</h2>
+      <p>To remove your data from your device: delete the app. All locally stored lists, items, tags, priorities, and preferences are removed automatically by iOS.</p>
+      <p>To remove your data from your iCloud: open <strong>Settings → [your name] → iCloud → Manage Account Storage</strong> (or "Manage Storage"), find TaskBeam, and choose "Delete Data." That clears your private CloudKit database for the app. If you've shared any lists with other people, they keep their own copies of those shared lists in their iCloud accounts — you can stop sharing first if you'd like the share to be torn down before you delete.</p>
+      <p>Because we don't run a server, there is no server-side deletion request to file. There's nothing on our side to delete.</p>
+
+      <h2>Children</h2>
+      <p>TaskBeam is rated 4+ and contains no content unsuitable for children. We do not knowingly collect data from children, because we do not collect data from anyone.</p>
+
+      <h2>Security</h2>
+      <p>Data in transit between your device and iCloud is encrypted by iOS using Apple's standard protections. Data at rest in iCloud is encrypted under Apple's standard CloudKit encryption. We do not introduce any additional network endpoints, so there is no extra surface area for data to leak through.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If this policy changes, we'll update the effective date above. The current version always lives at this URL. Material changes that affect what data is handled (for example, if we ever introduced an optional feature that talked to a third party) will be called out in the app's release notes.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy? Email <a href="mailto:team.taskbeam@pm.me">team.taskbeam@pm.me</a>.</p>
+
+      <a class="back-link" href="/">← Back to TaskBeam</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap-wide footer-inner">
+      <a class="brand" href="/">
+        <img src="/assets/icon.png" alt="TaskBeam" />
+        <span>Task<span class="dot">·</span>Beam</span>
+      </a>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#features">Features</a>
+        <a href="/#privacy">Privacy</a>
+        <a href="/privacy.html">Policy</a>
+      </div>
+      <div>© 2026 Tiny Robots</div>
+    </div>
+  </footer>
+
+</body>
+</html>
