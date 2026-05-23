@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — TaskBeam</title>
-  <meta name="description" content="TaskBeam is built privacy-first: no accounts, no third-party servers, no analytics, no advertising. Your lists live on your device and in your own iCloud." />
+  <meta name="description" content="TaskBeam is built privacy-first: no accounts, no analytics, no advertising. Your task data lives on your device and in your own iCloud." />
   <meta property="og:title" content="Privacy Policy — TaskBeam" />
-  <meta property="og:description" content="TaskBeam is built privacy-first: no accounts, no third-party servers, no analytics, no advertising. Your lists live on your device and in your own iCloud." />
+  <meta property="og:description" content="TaskBeam is built privacy-first: no accounts, no analytics, no advertising. Your task data lives on your device and in your own iCloud." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/icon.jpg" />
   <link rel="icon" type="image/jpg" href="/assets/icon.jpg" />
@@ -136,9 +136,9 @@
     <div class="wrap">
       <div class="eyebrow">Privacy Policy</div>
       <h1>Privacy at TaskBeam</h1>
-      <p class="effective">Effective date: <em>05/16/2026</em></p>
+      <p class="effective">Effective date: <em>05/22/2026</em></p>
 
-      <p>TaskBeam is a list and task app for iOS. We've designed it to be one of the most privacy-respecting apps in its category: we don't ask for your personal information, we don't run a server that stores your tasks, and we don't track you across apps or websites. The only cloud involved is your own iCloud.</p>
+      <p>TaskBeam is a list and task app for iOS. We've designed it to be one of the most privacy-respecting apps in its category: we don't ask for your personal information, we don't run a server that stores your tasks, and we don't track you across apps or websites. The only cloud that stores your task data is your own iCloud.</p>
 
       <hr class="rule" />
 
@@ -155,23 +155,25 @@
 
       <h2>What we do</h2>
 
-      <p><strong>Your lists are stored on your device.</strong> When you create a list, add an item, set a priority, or apply a tag, that data is written to local storage on your iPhone or iPad first. The app is fully usable offline. If you never sign in to iCloud, your data never leaves your device.</p>
+      <p><strong>Your lists are stored on your device.</strong> When you create a list, add an item, set a priority, apply a tag, create a dynamic list, choose an app theme, or set a reminder, that data is written to local storage on your iPhone or iPad first. The app is fully usable offline. If you never sign in to iCloud, your list data never leaves your device.</p>
 
-      <p><strong>TaskBeam syncs through your own iCloud (CloudKit).</strong> If you're signed into iCloud and have iCloud Drive enabled, TaskBeam uses Apple's CloudKit framework to sync your lists between the devices signed into your Apple ID. The data is stored in your <em>private</em> CloudKit database — a portion of your personal iCloud storage that belongs to you. We, the developers, do not have access to this data, cannot read it, cannot query it, and cannot export it. Apple's iCloud terms and security practices govern how this storage works; details are available in <a href="https://support.apple.com/en-us/HT202303">Apple's iCloud security overview</a>.</p>
+      <p><strong>TaskBeam syncs through your own iCloud (CloudKit).</strong> If you're signed into iCloud, TaskBeam uses Apple's CloudKit framework to sync your lists between the devices signed into your Apple ID. Owned lists, tasks, tags, priorities, reminder fire times, soft-delete state, and shared-list activity records are stored in your <em>private</em> CloudKit database — a portion of your personal iCloud storage that belongs to you. Local-only preferences like the active list, notification identifiers, theme, button color, background pattern, tour completion, and dynamic-list display order are kept on your device. We, the developers, do not have access to your CloudKit data, cannot read it, cannot query it, and cannot export it. Apple's iCloud terms and security practices govern how this storage works; details are available in <a href="https://support.apple.com/en-us/HT202303">Apple's iCloud security overview</a>.</p>
 
-      <p><strong>Sharing a list invites one other person to that list, and only that list.</strong> TaskBeam uses Apple's CKShare primitive. When you tap share, iOS generates an invitation. The person you send it to can accept and then read and edit that one list with you in real time. They cannot see any of your other lists. You can revoke access at any time from the share sheet; they can leave at any time from their own copy. The shared data lives in a CloudKit "shared" zone managed by Apple — again, we don't see it.</p>
+      <p><strong>Sharing a list invites only the people you choose to that list, and only that list.</strong> TaskBeam uses Apple's CKShare primitive. When you tap share, iOS generates an invitation. A recipient can accept and then read or edit that one list according to the iCloud permission you choose. They cannot see any of your other lists. You can revoke access at any time from the share sheet; recipients can leave at any time from their own copy. The shared data lives in a CloudKit "shared" zone managed by Apple — again, we don't see it.</p>
 
-      <p><strong>Local notifications, no push server.</strong> If you set a due date on an item, TaskBeam schedules a local notification on your device. The notification is delivered by iOS at the right time without contacting any server. No push tokens or device identifiers are sent anywhere. You can disable notifications at any time in iOS Settings → Notifications → TaskBeam.</p>
+      <p><strong>Local notifications, no TaskBeam push server.</strong> If you set a reminder on an item, TaskBeam schedules a local notification on your device. If you enable shared-list update alerts, TaskBeam creates lightweight activity records in CloudKit so other participants' devices can show local notifications like "Someone added Milk." Apple may deliver silent CloudKit notifications to wake the app for sync, but TaskBeam does not operate a push server and does not receive your push token. You can disable notifications at any time in iOS Settings → Notifications → TaskBeam.</p>
+
+      <p><strong>App updates.</strong> TaskBeam may contact Expo's update service to check for and download app updates. TaskBeam does not send your lists, tasks, tags, priorities, reminders, shared-list participants, or other task content to Expo.</p>
 
       <p><strong>App Store and Apple services.</strong> Because TaskBeam is distributed through the App Store and runs on iOS, the operating system and the App Store collect their own diagnostic and download information independently of us, governed by <a href="https://www.apple.com/legal/privacy/en-ww/">Apple's privacy policy</a>. We do not receive personally identifying data from Apple about who installed the app.</p>
 
       <h2>What we can and can't see</h2>
-      <p>We can see, in aggregate, the App Store metrics Apple makes available to every developer: total downloads, country, crash counts (without personal identifiers). We do not collect anything beyond what Apple shows every developer by default. We have no separate analytics pipeline, no telemetry, no event log.</p>
-      <p>We have no view at all into the contents of your lists, your tags, who you've shared with, or how you use the app session-by-session. That information is between you, your devices, and Apple's iCloud.</p>
+      <p>We can see, in aggregate, the App Store metrics Apple makes available to every developer, such as total downloads, country or region, and crash/diagnostic information Apple provides through App Store Connect. We do not collect anything beyond what Apple shows developers for App Store distribution. We have no separate analytics pipeline, no telemetry, no event log.</p>
+      <p>We have no view at all into the contents of your lists, your tags, your reminders, who you've shared with, your shared-list activity, or how you use the app session-by-session. That information is between you, your devices, the people you intentionally share with, and Apple's iCloud.</p>
 
       <h2>Data deletion</h2>
       <p>To remove your data from your device: delete the app. All locally stored lists, items, tags, priorities, and preferences are removed automatically by iOS.</p>
-      <p>To remove your data from your iCloud: open <strong>Settings → [your name] → iCloud → Manage Account Storage</strong> (or "Manage Storage"), find TaskBeam, and choose "Delete Data." That clears your private CloudKit database for the app. If you've shared any lists with other people, they keep their own copies of those shared lists in their iCloud accounts — you can stop sharing first if you'd like the share to be torn down before you delete.</p>
+      <p>To remove your data from your iCloud: open <strong>Settings → [your name] → iCloud → Manage Account Storage</strong> (or "Manage Storage"), find TaskBeam, and choose "Delete Data." That clears your private CloudKit database for the app. If you've shared any lists with other people, stop sharing those lists first if you'd like their access removed. If someone else shared a list with you, you can leave that shared list from inside TaskBeam.</p>
       <p>Because we don't run a server, there is no server-side deletion request to file. There's nothing on our side to delete.</p>
 
       <h2>Children</h2>
