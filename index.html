@@ -1,331 +1,157 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TaskBeam — Lists that beam between your devices.</title>
-  <meta name="description" content="A focused iOS task &amp; list manager. Real iCloud sync across your devices, shared lists for the people you choose, no ads, no tracking, no accounts." />
-  <meta property="og:title" content="TaskBeam — Lists that beam between your devices." />
-  <meta property="og:description" content="A focused iOS task &amp; list manager. Real iCloud sync across your devices, shared lists for the people you choose, no ads, no tracking, no accounts." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/icon.jpg" />
-  <meta name="twitter:card" content="summary" />
-  <link rel="icon" type="image/jpg" href="/assets/icon.jpg" />
-  <link rel="apple-touch-icon" href="/assets/icon.jpg" />
-  <style>
-    :root {
-      --bg: #04060f;
-      --bg-elev: #0a0f22;
-      --bg-card: rgba(20, 30, 60, 0.35);
-      --border: rgba(94, 179, 255, 0.12);
-      --border-strong: rgba(94, 179, 255, 0.28);
-      --text: #e8efff;
-      --text-muted: #8a98b8;
-      --text-dim: #5d6a8a;
-      --accent: #5eb3ff;
-      --accent-bright: #8ccaff;
-      --accent-glow: rgba(94, 179, 255, 0.45);
-      --accent-soft: rgba(94, 179, 255, 0.08);
-      --max-width: 1100px;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
-      font-size: 17px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      background-image:
-        radial-gradient(circle at 20% -10%, rgba(94, 179, 255, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(94, 179, 255, 0.05), transparent 35%);
-      background-attachment: fixed;
-    }
-    a { color: var(--accent-bright); text-decoration: none; }
-    a:hover { color: #b7dcff; }
-    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
-
-    /* Nav */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      background: rgba(4, 6, 15, 0.72);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 24px; max-width: var(--max-width); margin: 0 auto;
-    }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: 0.01em; color: var(--text); }
-    .brand img { width: 28px; height: 28px; border-radius: 7px; }
-    .brand .dot { color: var(--accent); margin: 0 2px; opacity: 0.7; }
-    .nav-links { display: flex; gap: 22px; font-size: 15px; }
-    .nav-links a { color: var(--text-muted); }
-    .nav-links a:hover { color: var(--text); }
-    @media (max-width: 560px) {
-      .nav-links { display: none; }
-    }
-
-    /* Hero */
-    .hero {
-      padding: 88px 0 56px;
-      text-align: center;
-      position: relative;
-    }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 14px; border-radius: 999px;
-      background: var(--accent-soft); border: 1px solid var(--border-strong);
-      color: var(--accent-bright); font-size: 13px; letter-spacing: 0.02em;
-      margin-bottom: 28px;
-    }
-    .badge .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
-    h1 {
-      font-size: clamp(38px, 6.5vw, 64px);
-      line-height: 1.05; letter-spacing: -0.02em;
-      margin: 0 0 22px; font-weight: 700;
-      background: linear-gradient(180deg, #ffffff 0%, #b7c7e6 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .lede {
-      font-size: clamp(17px, 2vw, 20px);
-      color: var(--text-muted); max-width: 640px; margin: 0 auto 36px;
-    }
-    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 22px; border-radius: 12px;
-      background: linear-gradient(180deg, #5eb3ff 0%, #2e8bff 100%);
-      color: #04060f; font-weight: 600; font-size: 16px;
-      box-shadow: 0 8px 32px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.25);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .cta:hover { transform: translateY(-1px); color: #04060f; box-shadow: 0 12px 40px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .cta-secondary {
-      padding: 13px 22px; border-radius: 12px;
-      background: transparent; color: var(--text); border: 1px solid var(--border-strong);
-      font-size: 16px;
-    }
-    .cta-secondary:hover { background: var(--accent-soft); color: var(--text); }
-
-    .hero-art {
-      margin: 56px auto 0; position: relative; width: min(280px, 60vw);
-    }
-    .hero-art img {
-      width: 100%; height: auto; display: block;
-      border-radius: 36px;
-      filter: drop-shadow(0 30px 60px rgba(94, 179, 255, 0.35));
-    }
-    .hero-art::after {
-      content: ""; position: absolute; inset: 30% -10% -40%; pointer-events: none;
-      background: radial-gradient(ellipse at center, rgba(94,179,255,0.2), transparent 60%);
-      filter: blur(20px); z-index: -1;
-    }
-
-    /* Sections */
-    section { padding: 80px 0; }
-    .section-label {
-      text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px;
-      color: var(--accent); margin-bottom: 14px;
-    }
-    h2 {
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.15; letter-spacing: -0.01em;
-      margin: 0 0 18px; font-weight: 700;
-      max-width: 900px;
-    }
-    .section-lede {
-      color: var(--text-muted); max-width: 880px;
-      font-size: 17px; margin: 0 0 48px;
-    }
-    #what .section-lede { margin-bottom: 24px; }
-    #what .section-lede:last-child { margin-bottom: 0; }
-
-    /* Feature grid */
-    .grid {
-      display: grid; gap: 18px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-    .card {
-      padding: 26px 24px; border-radius: 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      transition: border-color .2s ease, transform .2s ease;
-    }
-    .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-    .card h3 {
-      font-size: 17px; margin: 0 0 10px; color: var(--text); font-weight: 600;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .card h3 .ic {
-      width: 28px; height: 28px; border-radius: 8px;
-      background: var(--accent-soft); border: 1px solid var(--border-strong);
-      display: inline-flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 14px;
-    }
-    .card p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.55; }
-
-    /* Privacy strip */
-    .privacy-strip {
-      margin-top: 32px; padding: 32px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(94,179,255,0.06), rgba(94,179,255,0.02));
-      border: 1px solid var(--border-strong);
-    }
-    .privacy-strip p { color: var(--text-muted); margin: 0 0 12px; }
-    .privacy-strip p:last-child { margin-bottom: 0; }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 0 60px; margin-top: 40px;
-      color: var(--text-dim); font-size: 14px;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-    }
-    .footer-links { display: flex; gap: 18px; }
-    .footer-links a { color: var(--text-muted); }
-    .footer-links a:hover { color: var(--text); }
-
-    .divider { height: 1px; background: var(--border); margin: 0; border: 0; }
-  </style>
-</head>
-<body>
-
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="/">
-        <img src="/assets/icon.jpg" alt="TaskBeam" />
-        <span>Task<span class="dot">·</span>Beam</span>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Network Superstar</title>
+    <meta
+      name="description"
+      content="Network Superstar is a fast IT career game about tickets, incidents, networking skills, ranks, badges, and becoming the teammate everyone wants on shift."
+    >
+    <meta name="theme-color" content="#070a16">
+    <meta property="og:title" content="Network Superstar">
+    <meta property="og:description" content="Clock in, clear tickets, tame incidents, and level up from network noob to Network Superstar.">
+    <meta property="og:image" content="/assets/nss_loading_screen.png">
+    <link rel="icon" href="/assets/app-icon.png">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Network Superstar home">
+        <img src="/assets/app-icon.png" alt="" class="brand-icon">
+        <span>Network Superstar</span>
       </a>
-      <div class="nav-links">
+      <nav aria-label="Primary navigation">
+        <a href="#game">Game</a>
         <a href="#features">Features</a>
-        <a href="#privacy">Privacy</a>
-        <a href="/privacy">Policy</a>
-      </div>
-    </div>
-  </nav>
+        <a href="/privacy">Privacy</a>
+        <a href="mailto:team.superstar@proton.me">Contact</a>
+      </nav>
+    </header>
 
-  <header class="hero wrap">
-    <div class="badge"><span class="pulse"></span>Available on the App Store</div>
-    <h1>Lists that beam between your devices.</h1>
-    <p class="lede">A focused iOS task and list manager. Your lists sync through your own iCloud, and you can share lists with the people you choose.</p>
-    <div class="cta-row">
-      <a class="cta" href="https://apps.apple.com/us/app/taskbeam/id6769939729">Download on the App Store</a>
-      <a class="cta-secondary" href="#features">See features</a>
-    </div>
-    <div class="hero-art">
-      <img src="/assets/icon.jpg" alt="TaskBeam app icon" />
-    </div>
-  </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A daily operations console for networking fans</p>
+          <h1 id="hero-title">Clock in. Clear tickets. Become a Network Superstar.</h1>
+          <p class="hero-lede">
+            Welcome to the NOC, rookie. Network Superstar is a fast, text-driven IT career game where
+            you troubleshoot real-feeling problems, grow your reputation, and climb from network noob
+            to the teammate everyone wants on shift.
+          </p>
+          <div class="hero-actions" aria-label="Page actions">
+            <a class="button primary" href="#game">Enter the NOC</a>
+            <a class="app-store-button" href="#" aria-label="Download Network Superstar on the App Store">
+              <span class="app-store-icon" aria-hidden="true">A</span>
+              <span>
+                <small>Download on the</small>
+                App Store
+              </span>
+            </a>
+            <a class="button secondary" href="/privacy">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Network Superstar artwork">
+          <img src="/assets/nss_loading_screen.png" alt="Network Superstar game artwork with two network technicians">
+        </div>
+      </section>
 
-  <hr class="divider" />
+      <section id="game" class="section intro-section" aria-labelledby="game-title">
+        <div class="section-heading">
+          <p class="eyebrow">Build. Protect. Connect. Win.</p>
+          <h2 id="game-title">This is not a sleepy flashcard app.</h2>
+        </div>
+        <div class="console-panel">
+          <p>
+            Pick your workplace, create your player, and start taking on the kind of problems real IT
+            teams see every day: DNS weirdness, cabling issues, VLAN trouble, DHCP headaches, routing
+            questions, wireless complaints, security risks, latency, bandwidth bottlenecks, and more.
+          </p>
+          <p>
+            Every shift gives you choices. Work the queue, respond to incidents before they snowball,
+            study when you need to sharpen up, and manage your energy so you do not burn out mid-shift.
+          </p>
+        </div>
+      </section>
 
-  <section id="what" class="wrap">
-    <div class="section-label">What it is</div>
-    <h2>The list app that gets out of the way.</h2>
-    <p class="section-lede">
-      Open TaskBeam and you get lists. Items inside lists. Tags. Priorities. The things you actually need to plan a day, a trip, a shared project — and nothing else. No projects-of-projects, no calendar integrations, no AI to argue with. Just a fast, native iOS experience that feels like it belongs on your phone.
-    </p>
-    <p class="section-lede">
-      Everything is stored locally on your device first, so the app is instant. In the background, your lists quietly sync to your own private iCloud, so the same lists appear on your iPad, your other iPhone, and any new device you sign into. And when you want a list to be a two-person list — a grocery list with a partner, a packing list with a friend — you tap share, send the link, and the other person sees it live.
-    </p>
-  </section>
+      <section id="features" class="section" aria-labelledby="features-title">
+        <div class="section-heading">
+          <p class="eyebrow">What you will do</p>
+          <h2 id="features-title">Run the shift like it matters.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Close the queue</h3>
+            <p>Work tickets, choose the best first action, and keep follow-up work from piling up.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Tame incidents</h3>
+            <p>Respond to outages, blinking dashboards, risky changes, and the little mysteries that make IT work interesting.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Level up your career</h3>
+            <p>Earn XP, reputation, salary growth, ranks, badges, streaks, and Game Center achievements.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Make it yours</h3>
+            <p>Choose original retro-inspired background music, customize your console, swap app icons, and hunt for hidden details.</p>
+          </article>
+        </div>
+      </section>
 
-  <section id="features" class="wrap">
-    <div class="section-label">Features</div>
-    <h2>Built for the small stuff that actually matters.</h2>
-    <p class="section-lede">
-      Every feature is there because a list app needs it. Nothing is there to harvest your attention or your data.
-    </p>
+      <section class="section rank-section" aria-labelledby="rank-title">
+        <div class="section-heading">
+          <p class="eyebrow">Career ladder</p>
+          <h2 id="rank-title">From first login to final boss energy.</h2>
+        </div>
+        <div class="rank-layout">
+          <img src="/assets/rank-network-engineer.png" alt="Network Engineer rank badge">
+          <ol class="rank-list">
+            <li>Network Noob</li>
+            <li>Help Desk Network Tech</li>
+            <li>Network Administrator</li>
+            <li>Network Engineer</li>
+            <li>Senior Network Engineer</li>
+            <li>Network Architect</li>
+            <li>Network Superstar</li>
+          </ol>
+          <img src="/assets/rank-network-superstar.png" alt="Network Superstar rank badge">
+        </div>
+      </section>
 
-    <div class="grid">
-      <div class="card">
-        <h3><span class="ic">◎</span>Lists, items, tags, priorities</h3>
-        <p>The core taxonomy of a real list manager. Group related work into lists. Tag items across lists. Mark what's urgent versus what's just on deck.</p>
-      </div>
+      <section class="section badge-section" aria-labelledby="badges-title">
+        <div class="section-heading">
+          <p class="eyebrow">Badges and achievements</p>
+          <h2 id="badges-title">Proof you kept the packets moving.</h2>
+        </div>
+        <div class="badge-row">
+          <img src="/assets/badge-dns-detective.png" alt="DNS Detective badge">
+          <div>
+            <p>
+              Stack wins across fundamentals, subnetting, switching, routing, wireless, security,
+              troubleshooting, and automation. Good calls build streaks. Risky calls can cost energy.
+            </p>
+          </div>
+          <img src="/assets/badge-network-superstar.png" alt="Network Superstar badge">
+        </div>
+      </section>
 
-      <div class="card">
-        <h3><span class="ic">↻</span>Real iCloud sync</h3>
-        <p>Your lists ride on CloudKit — Apple's first-party sync, in your own iCloud account. No third-party task database in the loop. Sign in on a new device, your lists are there.</p>
-      </div>
+      <section class="section contact-section" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="eyebrow">Support</p>
+          <h2 id="contact-title">Need help with the app?</h2>
+        </div>
+        <p>
+          For support, privacy questions, or App Store review follow-up, email
+          <a href="mailto:team.superstar@proton.me">team.superstar@proton.me</a>.
+        </p>
+      </section>
+    </main>
 
-      <div class="card">
-        <h3><span class="ic">⇄</span>Share a list with someone you choose</h3>
-        <p>Built on CKShare, Apple's native sharing primitive. Send a link, choose view-only or edit access, and keep one list in sync. Stop sharing whenever you want.</p>
-      </div>
-
-      <div class="card">
-        <h3><span class="ic">⌁</span>Instant, offline-first</h3>
-        <p>Every interaction is local first. The app doesn't wait on the network, ever. Sync happens quietly in the background; you never see a spinner where a tap should be.</p>
-      </div>
-
-      <div class="card">
-        <h3><span class="ic">⌥</span>Native iOS, end to end</h3>
-        <p>Built for iPhone and iPad. Real swipe gestures, real haptics, real keyboard shortcuts on iPad. No web-view trickery. Dark mode and dynamic type respected by default.</p>
-      </div>
-
-      <div class="card">
-        <h3><span class="ic">○</span>No account, no signup</h3>
-        <p>The only "account" TaskBeam knows about is the Apple ID you're already signed into. There's no separate TaskBeam login, no email to verify, no password to remember.</p>
-      </div>
-
-      <div class="card">
-        <h3><span class="ic">⏰</span>Reminders and shared updates</h3>
-        <p>Optional item reminders and shared-list update alerts use iOS notifications. TaskBeam does not operate a push server or receive your push token.</p>
-      </div>
-
-      <div class="card">
-        <h3><span class="ic">✕</span>No ads, no tracking</h3>
-        <p>No banner ads. No sponsored items. No analytics SDKs. No third-party trackers in the binary. The Privacy Nutrition Label reflects this.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="privacy" class="wrap">
-    <div class="section-label">Privacy by design</div>
-    <h2>Your lists belong to you. Not to us.</h2>
-    <p class="section-lede">
-      TaskBeam doesn't have a server. We don't run a database of your tasks; we don't have one to sell or to lose in a breach. Your lists live in two places: on your device, and in your own private iCloud.
-    </p>
-
-    <div class="privacy-strip">
-      <p><strong style="color: var(--text);">Local first.</strong> Every list, item, tag, and priority is stored on your device. The app works fully offline. If you never sign into iCloud, nothing ever leaves your phone.</p>
-      <p><strong style="color: var(--text);">iCloud-only sync.</strong> If iCloud is enabled, TaskBeam uses Apple's CloudKit to sync your data inside <em>your own</em> iCloud account. We — the developers — cannot see, query, or export any of it. Apple's iCloud terms and security model apply.</p>
-      <p><strong style="color: var(--text);">Sharing is explicit.</strong> A list is private until you tap share. When you share, only invited participants can see that one list. You can revoke access at any time, and recipients can leave at any time.</p>
-      <p><strong style="color: var(--text);">No ads or analytics.</strong> No analytics SDKs, no ad networks, no crash reporters that ship task data to a vendor. The app uses Apple iCloud for task data and may contact Expo only to check for app updates.</p>
-      <p style="margin-top: 18px;"><a href="/privacy">Read the full privacy policy →</a></p>
-    </div>
-  </section>
-
-  <section id="contact" class="wrap" style="padding-top: 24px;">
-    <div class="section-label">Get in touch</div>
-    <h2>Questions or feedback?</h2>
-    <p class="section-lede">
-      For App Store compliance, reviewer reference, or anything else:
-      <a href="/privacy">Privacy Policy</a> · <a href="mailto:team.taskbeam@pm.me">team.taskbeam@pm.me</a>
-    </p>
-  </section>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <a class="brand" href="/">
-        <img src="/assets/icon.jpg" alt="TaskBeam" />
-        <span>Task<span class="dot">·</span>Beam</span>
-      </a>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="#features">Features</a>
-        <a href="#privacy">Privacy</a>
-        <a href="/privacy">Policy</a>
-      </div>
-      <div>© 2026 Tiny Robots</div>
-    </div>
-  </footer>
-
-</body>
+    <footer class="site-footer">
+      <span>&copy; 2026 Network Superstar.</span>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="mailto:team.superstar@proton.me">team.superstar@proton.me</a>
+    </footer>
+  </body>
 </html>
